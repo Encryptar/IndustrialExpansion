@@ -1,5 +1,6 @@
 package net.Encryptar.IndustrialExpansion;
 
+import net.Encryptar.IndustrialExpansion.core.init.BlockInit;
 import net.Encryptar.IndustrialExpansion.core.init.ItemInit;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -12,6 +13,8 @@ public class IndustrialExpansion {
 
     public IndustrialExpansion() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        BlockInit.BLOCKS.register(bus);
         ItemInit.ITEMS.register(bus);
+
     }
 }
