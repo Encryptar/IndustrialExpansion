@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "industrial_expansion:blocks/rubber_log",
+    "side": "industrial_expansion:blocks/rubber_log"
+  }
+}`

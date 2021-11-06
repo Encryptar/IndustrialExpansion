@@ -1,4 +1,13 @@
 {
-  "item.industrial_expansion.example_item": "Example Item",
-  "block.industrial_expansion.tin_ore": "Tin Ore"
+  "item.industrial_expansion.tin_ingot": "Tin Ingot",
+  "item.industrial_expansion.raw_tin": "Raw Tin",
+  "block.industrial_expansion.tin_ore": "Tin Ore",
+  "block.industrial_expansion.deepslate_tin_ore": "Deepslate Tin Ore",
+  "block.industrial_expansion.rubber_planks": "Rubber Wood Planks",
+  "block.industrial_expansion.rubber_log": "Rubber Wood Log",
+  "block.industrial_expansion.stripped_rubber_log": "Stripped Rubber Wood Log",
+  "block.industrial_expansion.rubber_wood": "Rubber Wood",
+  "block.industrial_expansion.stripped_rubber_wood": "Stripped Rubber Wood",
+  "block.industrial_expansion.rubber_leaves": "Rubber Leaves",
+  "itemGroup.industrial_expansion": "Industrial Expansion"
 }

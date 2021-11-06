@@ -10,7 +10,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "industrial_expansion:tin_ore",
+              "name": "industrial_expansion:deepslate_tin_ore",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",
