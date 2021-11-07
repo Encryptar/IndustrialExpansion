@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item":"industrial_expansion:rubber_tree_sap"
+  },
+  "result": "industrial_expansion:rubber",
+  "experience": 0.3,
+  "cookingtime": 200
+}

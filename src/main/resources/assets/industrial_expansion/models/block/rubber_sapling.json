@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "industrial_expansion:blocks/rubber_sapling"
+  }
+}

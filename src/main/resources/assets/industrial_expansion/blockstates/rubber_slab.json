@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "industrial_expansion:block/rubber_slab"
+    },
+    "type=double": {
+      "model": "industrial_expansion:block/rubber_planks"
+    },
+    "type=top": {
+      "model": "industrial_expansion:block/rubber_slab_top"
+    }
+  }
+}
