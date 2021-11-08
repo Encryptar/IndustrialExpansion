@@ -1,6 +1,7 @@
 package net.Encryptar.IndustrialExpansion;
 
 import net.Encryptar.IndustrialExpansion.core.init.BlockInit;
+import net.Encryptar.IndustrialExpansion.core.init.EnchantmentInit;
 import net.Encryptar.IndustrialExpansion.core.init.ItemInit;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -24,6 +25,7 @@ public class IndustrialExpansion {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         BlockInit.BLOCKS.register(bus);
         ItemInit.ITEMS.register(bus);
+        EnchantmentInit.ENCHANTMENTS.register(bus);
 
 
     }

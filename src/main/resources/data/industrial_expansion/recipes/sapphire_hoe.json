@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    " /",
+    " /"
+  ],
+  "key": {
+    "#": {
+      "item": "industrial_expansion:sapphire"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "industrial_expansion:sapphire_hoe",
+    "count": 1
+  }
+}

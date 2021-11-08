@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_stairs",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "industrial_expansion:rubber_planks"
+    }
+  },
+  "result": {
+    "item": "industrial_expansion:rubber_stairs",
+    "count": 4
+  }
+}

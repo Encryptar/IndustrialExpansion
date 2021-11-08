@@ -1,0 +1,16 @@
+
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "industrial_expansion:stripped_rubber_log"
+    }
+  },
+  "result": {
+    "item": "industrial_expansion:rubber_planks",
+    "count": 4
+  }
+}

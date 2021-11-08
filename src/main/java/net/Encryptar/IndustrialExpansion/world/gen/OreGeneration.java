@@ -34,7 +34,23 @@ public class OreGeneration {
                         OreConfiguration.target(OreConfiguration.Predicates.STONE_ORE_REPLACEABLES, BlockInit.TIN_ORE.get().defaultBlockState()),
                         OreConfiguration.target(OreConfiguration.Predicates.DEEPSLATE_ORE_REPLACEABLES, BlockInit.DEEPSLATE_TIN_ORE.get().defaultBlockState())
                         ), 8)).rangeUniform(VerticalAnchor.bottom(),VerticalAnchor.aboveBottom(96)).squared().count(20);
+        ConfiguredFeature<?,?> sapphireOre = Feature.ORE.configured(
+                new OreConfiguration(List.of(
+                        OreConfiguration.target(OreConfiguration.Predicates.STONE_ORE_REPLACEABLES, BlockInit.SAPPHIRE_ORE.get().defaultBlockState()),
+                        OreConfiguration.target(OreConfiguration.Predicates.DEEPSLATE_ORE_REPLACEABLES, BlockInit.DEEPSLATE_SAPPHIRE_ORE.get().defaultBlockState())
+                ), 8)).rangeUniform(VerticalAnchor.bottom(),VerticalAnchor.aboveBottom(50)).squared().count(6);
+        ConfiguredFeature<?,?> rubyOre = Feature.ORE.configured(
+                new OreConfiguration(List.of(
+                        OreConfiguration.target(OreConfiguration.Predicates.STONE_ORE_REPLACEABLES, BlockInit.RUBY_ORE.get().defaultBlockState()),
+                        OreConfiguration.target(OreConfiguration.Predicates.DEEPSLATE_ORE_REPLACEABLES, BlockInit.DEEPSLATE_RUBY_ORE.get().defaultBlockState())
+                ), 8)).rangeUniform(VerticalAnchor.bottom(),VerticalAnchor.aboveBottom(50)).squared().count(6);
+
+
+
+
         OVERWORLD_ORES.add(register("tin_ore",tinOre));
+        OVERWORLD_ORES.add(register("sapphire_ore",sapphireOre));
+        OVERWORLD_ORES.add(register("ruby_ore",rubyOre));
     }
 
     @Mod.EventBusSubscriber(modid =IndustrialExpansion.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)

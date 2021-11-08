@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "industrial_expansion:tin_ore",
+    "industrial_expansion:deepslate_tin_ore"
+  ]
+}
