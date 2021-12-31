@@ -21,7 +21,6 @@ public class CommonModEvents {
     @SubscribeEvent
     public static void commonSetup(FMLCommonSetupEvent event){
         event.enqueueWork(OreGeneration::registerOres);
-        event.enqueueWork(TreeGeneration::registerTrees);
     }
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event){

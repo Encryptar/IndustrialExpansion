@@ -22,7 +22,7 @@ public final class BlockInit {
     public static final RegistryObject<Block> RUBBER_WOOD = BLOCKS.register("rubber_wood",() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
     public static final RegistryObject<Block> STRIPPED_RUBBER_LOG = BLOCKS.register("stripped_rubber_log",() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
     public static final RegistryObject<Block> STRIPPED_RUBBER_WOOD = BLOCKS.register("stripped_rubber_wood",() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
-    public static final RegistryObject<Block> RUBBER_LEAVES = BLOCKS.register("rubber_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).randomTicks().sound(SoundType.GRASS).noOcclusion()));
+    public static final RegistryObject<Block> RUBBER_LEAVES = BLOCKS.register("rubber_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
     public static final RegistryObject<Block> RUBBER_SAPLING = BLOCKS.register("rubber_sapling", () -> new SaplingBlock(new RubberTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING).instabreak().noOcclusion()));
     public static final RegistryObject<Block> RUBBER_STAIRS = BLOCKS.register("rubber_stairs",() -> new StairBlock(() -> RUBBER_PLANKS.get().defaultBlockState(),BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)));
     public static final RegistryObject<Block> RUBBER_SLAB = BLOCKS.register("rubber_slab",() -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
