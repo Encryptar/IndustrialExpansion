@@ -29,7 +29,7 @@ public final class BlockInit {
     public static final RegistryObject<Block> RUBBER_FENCE = BLOCKS.register("rubber_fence",() -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)));
     public static final RegistryObject<Block> RUBBER_FENCE_GATE = BLOCKS.register("rubber_fence_gate",() -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE)));
     //Utility Blocks
-    //public static final RegistryObject<TapBlock> TREE_SAP_TAP = BLOCKS.register("tree_sap_tap",() -> new TapBlock(BlockBehaviour.Properties.of(Material.METAL)));
+    public static final RegistryObject<TapBlock> TREE_SAP_TAP = BLOCKS.register("tree_sap_tap",() -> new TapBlock(BlockBehaviour.Properties.of(Material.METAL)));
     //public static final RegistryObject<Block> COPPER_CABLE = BLOCKS.register("copper_cable",() -> new (BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE)));
     //Sapphire
     public static final RegistryObject<Block> SAPPHIRE_BLOCK = BLOCKS.register("sapphire_block",() -> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_BLOCK)));

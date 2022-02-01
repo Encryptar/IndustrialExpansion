@@ -58,7 +58,8 @@ public final class ItemInit {
     public static final RegistryObject<Item> RUBY_AXE = ITEMS.register("ruby_axe", () -> new AxeItem(ToolInit.GEM, 5.0F, -3.0F, (new Item.Properties()).tab(CreativeModeTab.TAB_TOOLS)));
     public static final RegistryObject<Item> RUBY_HOE = ITEMS.register("ruby_hoe", () -> new HoeItem(ToolInit.GEM, -3, 0.0F, (new Item.Properties()).tab(CreativeModeTab.TAB_TOOLS)));
 
-    //
+    //Block
+    public static final RegistryObject<BlockItem> TREE_SAP_TAP = ITEMS.register("tree_sap_tap", () -> new BlockItem(BlockInit.TREE_SAP_TAP.get(), new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
 
 
 }
