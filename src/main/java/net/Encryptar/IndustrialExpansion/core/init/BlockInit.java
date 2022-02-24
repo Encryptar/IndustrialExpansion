@@ -1,11 +1,11 @@
 package net.Encryptar.IndustrialExpansion.core.init;
 
 import net.Encryptar.IndustrialExpansion.IndustrialExpansion;
-import net.Encryptar.IndustrialExpansion.common.blocks.TapBlock;
+import net.Encryptar.IndustrialExpansion.common.blocks.CompositeFurnace.CompositeFurnace;
+import net.Encryptar.IndustrialExpansion.common.blocks.TreeSapTap.TapBlock;
 import net.Encryptar.IndustrialExpansion.world.structures.RubberTreeGrower;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -28,8 +28,10 @@ public final class BlockInit {
     public static final RegistryObject<Block> RUBBER_SLAB = BLOCKS.register("rubber_slab",() -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
     public static final RegistryObject<Block> RUBBER_FENCE = BLOCKS.register("rubber_fence",() -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)));
     public static final RegistryObject<Block> RUBBER_FENCE_GATE = BLOCKS.register("rubber_fence_gate",() -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE)));
-    //Utility Blocks
-    public static final RegistryObject<TapBlock> TREE_SAP_TAP = BLOCKS.register("tree_sap_tap",() -> new TapBlock(BlockBehaviour.Properties.of(Material.METAL)));
+    public static final RegistryObject<Block> TREE_SAP_TAP = BLOCKS.register("tree_sap_tap",() -> new TapBlock(BlockBehaviour.Properties.copy(Blocks.HOPPER)));
+
+    //Machines
+    public static final RegistryObject<Block> COMPOSITE_FURNACE = BLOCKS.register("composite_furnace", () -> new CompositeFurnace(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
     //public static final RegistryObject<Block> COPPER_CABLE = BLOCKS.register("copper_cable",() -> new (BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE)));
     //Sapphire
     public static final RegistryObject<Block> SAPPHIRE_BLOCK = BLOCKS.register("sapphire_block",() -> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_BLOCK)));

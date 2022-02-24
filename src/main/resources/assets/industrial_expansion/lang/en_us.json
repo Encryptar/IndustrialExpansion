@@ -35,6 +35,8 @@
   "block.industrial_expansion.rubber_slab": "Rubber Wood Slab",
   "block.industrial_expansion.rubber_fence": "Rubber Wood Fence",
   "block.industrial_expansion.rubber_fence_gate": "Rubber Wood Fence Gate",
+  "block.industrial_expansion.tree_sap_tap": "Tree Tap",
+  "block.industrial_expansion.composite_furnace": "Composite Furnace",
   "enchantment.industrial_expansion.vampiric": "Vampiric",
   "itemGroup.industrial_expansion": "Industrial Expansion"
 }
