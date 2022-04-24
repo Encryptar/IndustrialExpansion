@@ -1,14 +1,14 @@
 package net.Encryptar.IndustrialExpansion.core.init;
 
 import net.Encryptar.IndustrialExpansion.IndustrialExpansion;
-import net.Encryptar.IndustrialExpansion.common.blocks.CompositeFurnace.CompositeFurnace;
+//import net.Encryptar.IndustrialExpansion.common.blocks.CompositeFurnace.CompositeFurnace;
 import net.Encryptar.IndustrialExpansion.common.blocks.TreeSapTap.TapBlock;
 import net.Encryptar.IndustrialExpansion.world.structures.RubberTreeGrower;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public final class BlockInit {
     private BlockInit(){}
@@ -31,8 +31,9 @@ public final class BlockInit {
     public static final RegistryObject<Block> TREE_SAP_TAP = BLOCKS.register("tree_sap_tap",() -> new TapBlock(BlockBehaviour.Properties.copy(Blocks.HOPPER)));
 
     //Machines
-    public static final RegistryObject<Block> COMPOSITE_FURNACE = BLOCKS.register("composite_furnace", () -> new CompositeFurnace(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
+    //public static final RegistryObject<Block> COMPOSITE_FURNACE = BLOCKS.register("composite_furnace", () -> new CompositeFurnace(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
     //public static final RegistryObject<Block> COPPER_CABLE = BLOCKS.register("copper_cable",() -> new (BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE)));
+
     //Sapphire
     public static final RegistryObject<Block> SAPPHIRE_BLOCK = BLOCKS.register("sapphire_block",() -> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_BLOCK)));
     public static final RegistryObject<Block> SAPPHIRE_ORE = BLOCKS.register("sapphire_ore",() -> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE)));

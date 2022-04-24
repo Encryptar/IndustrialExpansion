@@ -1,6 +1,7 @@
 package net.Encryptar.IndustrialExpansion.core.init;
 
 import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -59,7 +60,7 @@ public enum ToolInit implements Tier {
 
     @Nullable
     @Override
-    public Tag<Block> getTag() {
+    public TagKey<Block> getTag() {
         return Tier.super.getTag();
     }
 }

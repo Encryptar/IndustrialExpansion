@@ -2,9 +2,9 @@ package net.Encryptar.IndustrialExpansion.core.init;
 
 import net.Encryptar.IndustrialExpansion.IndustrialExpansion;
 import net.minecraft.world.item.*;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public final class ItemInit {
     private ItemInit(){}
@@ -60,7 +60,7 @@ public final class ItemInit {
 
     //Utility Blocks
     public static final RegistryObject<BlockItem> TREE_SAP_TAP = ITEMS.register("tree_sap_tap", () -> new BlockItem(BlockInit.TREE_SAP_TAP.get(), new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
-    public static final RegistryObject<BlockItem> COMPOSITE_FURNACE = ITEMS.register("composite_furnace", () -> new BlockItem(BlockInit.COMPOSITE_FURNACE.get(), new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
+    //public static final RegistryObject<BlockItem> COMPOSITE_FURNACE = ITEMS.register("composite_furnace", () -> new BlockItem(BlockInit.COMPOSITE_FURNACE.get(), new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
 
 
 }

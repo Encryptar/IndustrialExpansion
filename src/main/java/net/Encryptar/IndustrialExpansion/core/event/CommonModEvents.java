@@ -19,10 +19,6 @@ public class CommonModEvents {
     public static void registerAttributes(EntityAttributeCreationEvent event){
     }
     @SubscribeEvent
-    public static void commonSetup(FMLCommonSetupEvent event){
-        event.enqueueWork(OreGeneration::registerOres);
-    }
-    @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event){
         event.enqueueWork(() -> {ItemBlockRenderTypes.setRenderLayer(BlockInit.RUBBER_SAPLING.get(), RenderType.cutout());});
     }
