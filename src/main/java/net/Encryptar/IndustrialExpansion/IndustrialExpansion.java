@@ -1,6 +1,8 @@
 package net.Encryptar.IndustrialExpansion;
 
+import net.Encryptar.IndustrialExpansion.client.menu.CompositeFurnaceScreen;
 import net.Encryptar.IndustrialExpansion.core.init.*;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
@@ -29,6 +31,8 @@ public class IndustrialExpansion {
         ItemInit.ITEMS.register(bus);
         EnchantmentInit.ENCHANTMENTS.register(bus);
         BlockEntityInit.BLOCK_ENTITIES.register(bus);
+        RecipeTypeInit.SERIALIZERS.register(bus);
+        MenuInit.MENUS.register(bus);
     }
     public static VoxelShape calculateShapes(Direction to, VoxelShape shape) {
         final VoxelShape[] buffer = { shape, Shapes.empty() };

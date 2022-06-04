@@ -1,7 +1,7 @@
 package net.Encryptar.IndustrialExpansion.core.init;
 
 import net.Encryptar.IndustrialExpansion.IndustrialExpansion;
-//import net.Encryptar.IndustrialExpansion.common.blocks.CompositeFurnace.CompositeFurnace;
+import net.Encryptar.IndustrialExpansion.common.blocks.CompositeFurnace.CompositeFurnace;
 import net.Encryptar.IndustrialExpansion.common.blocks.TreeSapTap.TapBlock;
 import net.Encryptar.IndustrialExpansion.world.structures.RubberTreeGrower;
 import net.minecraft.world.level.block.*;
@@ -31,7 +31,7 @@ public final class BlockInit {
     public static final RegistryObject<Block> TREE_SAP_TAP = BLOCKS.register("tree_sap_tap",() -> new TapBlock(BlockBehaviour.Properties.copy(Blocks.HOPPER)));
 
     //Machines
-    //public static final RegistryObject<Block> COMPOSITE_FURNACE = BLOCKS.register("composite_furnace", () -> new CompositeFurnace(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
+    public static final RegistryObject<Block> COMPOSITE_FURNACE = BLOCKS.register("composite_furnace", () -> new CompositeFurnace(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
     //public static final RegistryObject<Block> COPPER_CABLE = BLOCKS.register("copper_cable",() -> new (BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE)));
 
     //Sapphire
