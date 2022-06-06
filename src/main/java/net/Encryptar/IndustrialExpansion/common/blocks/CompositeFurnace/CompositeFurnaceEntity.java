@@ -1,6 +1,7 @@
 package net.Encryptar.IndustrialExpansion.common.blocks.CompositeFurnace;
 
 import net.Encryptar.IndustrialExpansion.client.menu.CompositeFurnaceMenu;
+import net.Encryptar.IndustrialExpansion.common.recipes.CompositeSmeltingRecipe;
 import net.Encryptar.IndustrialExpansion.core.init.BlockEntityInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -14,6 +15,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -25,6 +27,10 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
+import java.util.Optional;
+import java.util.Random;
+
+import static net.Encryptar.IndustrialExpansion.common.blocks.CompositeFurnace.CompositeFurnace.LIT;
 
 public class CompositeFurnaceEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(11){
@@ -128,22 +134,69 @@ public class CompositeFurnaceEntity extends BlockEntity implements MenuProvider 
             setChanged(pLevel, pPos, pState);
             if(pBlockEntity.progress > pBlockEntity.maxProgress){
                 craftItem(pBlockEntity);
-                pBlockEntity.progress = 0;
             }
         } else {
-            pBlockEntity.progress = 0;
             setChanged(pLevel, pPos, pState);
+            pBlockEntity.resetProgress();
         }
     }
 
-    private static boolean hasRecipe(CompositeFurnaceEntity entity) {return false;}
+    private static boolean hasRecipe(CompositeFurnaceEntity entity) {
+        Level level = entity.level;
+        SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+        for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
+        }
 
-    public static void craftItem(BlockEntity blockEntity){
+        Optional<CompositeSmeltingRecipe> match = level.getRecipeManager()
+                .getRecipeFor(CompositeSmeltingRecipe.Type.INSTANCE, inventory, level);
+
+        return match.isPresent() && canInsertAmountIntoOutputSlot(inventory)
+                && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem());
+    }
+
+    public static void craftItem(CompositeFurnaceEntity blockEntity){
+        Level level = blockEntity.level;
+        SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
+        for (int i = 0; i < blockEntity.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, blockEntity.itemHandler.getStackInSlot(i));
+        }
+
+        Optional<CompositeSmeltingRecipe> match = level.getRecipeManager()
+                .getRecipeFor(CompositeSmeltingRecipe.Type.INSTANCE, inventory, level);
+
+        if(match.isPresent()) {
+            blockEntity.itemHandler.extractItem(1, 1, false);
+            blockEntity.itemHandler.extractItem(2, 1, false);
+            blockEntity.itemHandler.extractItem(3, 1, false);
+            blockEntity.itemHandler.extractItem(4, 1, false);
+            blockEntity.itemHandler.extractItem(5, 1, false);
+            blockEntity.itemHandler.extractItem(6, 1, false);
+            blockEntity.itemHandler.extractItem(7, 1, false);
+            blockEntity.itemHandler.extractItem(8, 1, false);
+            blockEntity.itemHandler.extractItem(9, 1, false);
+
+            blockEntity.itemHandler.setStackInSlot(10, new ItemStack(match.get().getResultItem().getItem(),
+                    blockEntity.itemHandler.getStackInSlot(10).getCount() + 1));
+
+            blockEntity.resetProgress();
+        }
 
     }
 
+    private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack output) {
+        return inventory.getItem(10).getItem() == output.getItem() || inventory.getItem(10).isEmpty();
+    }
 
-    private static boolean hasNotReachedStackLimit(CompositeFurnaceEntity entity) {
-        return entity.itemHandler.getStackInSlot(3).getCount() < entity.itemHandler.getStackInSlot(3).getMaxStackSize();
+    private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
+        return inventory.getItem(10).getMaxStackSize() > inventory.getItem(10).getCount();
+    }
+
+    private void resetProgress() {
+        this.progress = 0;
+    }
+
+    public static void burnFuel(CompositeFurnaceEntity blockEntity){
+        blockEntity.itemHandler.extractItem(0, 1, false);
     }
 }

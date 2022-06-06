@@ -43,5 +43,10 @@ public final class BlockInit {
     public static final RegistryObject<Block> RUBY_ORE = BLOCKS.register("ruby_ore",() -> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE)));
     public static final RegistryObject<Block> DEEPSLATE_RUBY_ORE = BLOCKS.register("deepslate_ruby_ore",() -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_EMERALD_ORE)));
 
+    //Topaz
+    public static final RegistryObject<Block> TOPAZ_BLOCK = BLOCKS.register("topaz_block",() -> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_BLOCK)));
+    public static final RegistryObject<Block> TOPAZ_ORE = BLOCKS.register("topaz_ore",() -> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE)));
+    public static final RegistryObject<Block> DEEPSLATE_TOPAZ_ORE = BLOCKS.register("deepslate_topaz_ore",() -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_EMERALD_ORE)));
+
 }
 

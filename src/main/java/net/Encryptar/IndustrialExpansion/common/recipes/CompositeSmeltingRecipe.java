@@ -29,6 +29,7 @@ public class CompositeSmeltingRecipe implements Recipe<SimpleContainer> {
 
     @Override
     public boolean matches(SimpleContainer container, Level level) {
+        System.out.println(recipeItems.get(0));
         return recipeItems.get(0).test(container.getItem(1));
     }
 

@@ -58,6 +58,17 @@ public final class ItemInit {
     public static final RegistryObject<Item> RUBY_AXE = ITEMS.register("ruby_axe", () -> new AxeItem(ToolInit.GEM, 5.0F, -3.0F, (new Item.Properties()).tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
     public static final RegistryObject<Item> RUBY_HOE = ITEMS.register("ruby_hoe", () -> new HoeItem(ToolInit.GEM, -3, 0.0F, (new Item.Properties()).tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
 
+    //Topaz
+    public static final RegistryObject<Item> TOPAZ = ITEMS.register("topaz",() -> new Item(new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
+    public static final RegistryObject<BlockItem> TOPAZ_BLOCK = ITEMS.register("topaz_block",() -> new BlockItem(BlockInit.TOPAZ_BLOCK.get(), new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
+    public static final RegistryObject<BlockItem> TOPAZ_ORE = ITEMS.register("topaz_ore",() -> new BlockItem(BlockInit.TOPAZ_ORE.get(), new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
+    public static final RegistryObject<BlockItem> DEEPSLATE_TOPAZ_ORE = ITEMS.register("deepslate_topaz_ore",() -> new BlockItem(BlockInit.DEEPSLATE_TOPAZ_ORE.get(), new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
+    public static final RegistryObject<Item> TOPAZ_SWORD = ITEMS.register("topaz_sword",() -> new SwordItem(ToolInit.GEM, 2, -2.4F,new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
+    public static final RegistryObject<Item> TOPAZ_SHOVEL = ITEMS.register("topaz_shovel",() -> new ShovelItem(ToolInit.GEM, 1.5F, -3.0F, (new Item.Properties()).tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
+    public static final RegistryObject<Item> TOPAZ_PICKAXE = ITEMS.register("topaz_pickaxe", () -> new PickaxeItem(ToolInit.GEM, 1, -2.8F, (new Item.Properties()).tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
+    public static final RegistryObject<Item> TOPAZ_AXE = ITEMS.register("topaz_axe", () -> new AxeItem(ToolInit.GEM, 5.0F, -3.0F, (new Item.Properties()).tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
+    public static final RegistryObject<Item> TOPAZ_HOE = ITEMS.register("topaz_hoe", () -> new HoeItem(ToolInit.GEM, -3, 0.0F, (new Item.Properties()).tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
+
     //Utility Blocks
     public static final RegistryObject<BlockItem> TREE_SAP_TAP = ITEMS.register("tree_sap_tap", () -> new BlockItem(BlockInit.TREE_SAP_TAP.get(), new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
     public static final RegistryObject<BlockItem> COMPOSITE_FURNACE = ITEMS.register("composite_furnace", () -> new BlockItem(BlockInit.COMPOSITE_FURNACE.get(), new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
