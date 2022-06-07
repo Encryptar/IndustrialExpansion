@@ -19,9 +19,10 @@ public final class ItemInit {
     //public static final RegistryObject<BlockItem> COPPER_CABLE = ITEMS.register("copper_cable", () -> new BlockItem(BlockInit.COPPER_CABLE,new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
     public static final RegistryObject<Item> BASIC_CIRCUIT = ITEMS.register("basic_circuit",() -> new Item(new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
 
-    //Ores
-    public static final RegistryObject<BlockItem> TIN_ORE_BLOCKITEM = ITEMS.register("tin_ore", () -> new BlockItem(BlockInit.TIN_ORE.get(),new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
-    public static final RegistryObject<BlockItem> DEEPSLATE_TIN_ORE_BLOCKITEM = ITEMS.register("deepslate_tin_ore", () -> new BlockItem(BlockInit.DEEPSLATE_TIN_ORE.get(),new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
+    //Tin
+    public static final RegistryObject<BlockItem> TIN_ORE= ITEMS.register("tin_ore", () -> new BlockItem(BlockInit.TIN_ORE.get(),new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
+    public static final RegistryObject<BlockItem> DEEPSLATE_TIN_ORE = ITEMS.register("deepslate_tin_ore", () -> new BlockItem(BlockInit.DEEPSLATE_TIN_ORE.get(),new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
+    public static final RegistryObject<BlockItem> TIN_BLOCK = ITEMS.register("tin_block", () -> new BlockItem(BlockInit.TIN_BLOCK.get(),new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));
 
     //Rubber Wood
     public static final RegistryObject<BlockItem> RUBBER_PLANKS = ITEMS.register("rubber_planks",() -> new BlockItem(BlockInit.RUBBER_PLANKS.get(), new Item.Properties().tab(IndustrialExpansion.IndustrialExpansionCreativeTab)));

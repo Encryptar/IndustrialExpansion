@@ -8,6 +8,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
@@ -18,19 +19,34 @@ public class CompositeSmeltingRecipe implements Recipe<SimpleContainer> {
     private final ResourceLocation id;
     private final ItemStack output;
     private final NonNullList<Ingredient> recipeItems;
+    private final boolean isSimple;
+
 
     public CompositeSmeltingRecipe(ResourceLocation id, ItemStack output,
                                    NonNullList<Ingredient> recipeItems) {
         this.id = id;
         this.output = output;
         this.recipeItems = recipeItems;
+        this.isSimple = recipeItems.stream().allMatch(Ingredient::isSimple);
     }
 
 
     @Override
     public boolean matches(SimpleContainer container, Level level) {
-        System.out.println(recipeItems.get(0));
-        return recipeItems.get(0).test(container.getItem(1));
+        StackedContents stackedcontents = new StackedContents();
+        java.util.List<ItemStack> inputs = new java.util.ArrayList<>();
+        int i = 0;
+
+        for(int j = 0; j < container.getContainerSize(); ++j) {
+            ItemStack itemstack = container.getItem(j);
+            if (!itemstack.isEmpty()) {
+                ++i;
+                if (isSimple)
+                    stackedcontents.accountStack(itemstack, 1);
+                else inputs.add(itemstack);
+            }
+        }
+        return i == this.recipeItems.size() && (isSimple ? stackedcontents.canCraft(this, null) : net.minecraftforge.common.util.RecipeMatcher.findMatches(inputs,  this.recipeItems) != null);
     }
 
     @Override
@@ -77,9 +93,11 @@ public class CompositeSmeltingRecipe implements Recipe<SimpleContainer> {
         public CompositeSmeltingRecipe fromJson(ResourceLocation id, JsonObject json){
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
             JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
-            NonNullList<Ingredient> inputs = NonNullList.withSize(1, Ingredient.EMPTY);
+            NonNullList<Ingredient> inputs = NonNullList.withSize(ingredients.size(), Ingredient.EMPTY);
+
 
             for (int i = 0; i < inputs.size(); i++) {
+                System.out.println(Ingredient.fromJson(ingredients.get(i)));
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 

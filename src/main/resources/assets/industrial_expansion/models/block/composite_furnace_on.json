@@ -1,5 +1,5 @@
 {
-  "parent": "industrial_expansion:block/orientable",
+  "parent": "minecraft:block/orientable",
   "textures": {
     "top": "industrial_expansion:blocks/composite_furnace_top",
     "front": "industrial_expansion:blocks/composite_furnace_front_on",

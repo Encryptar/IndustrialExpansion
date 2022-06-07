@@ -14,8 +14,6 @@ public final class BlockInit {
     private BlockInit(){}
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, IndustrialExpansion.MODID);
     //Ores
-    public static final RegistryObject<Block> TIN_ORE = BLOCKS.register("tin_ore", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COPPER_ORE)));
-    public static final RegistryObject<Block> DEEPSLATE_TIN_ORE = BLOCKS.register("deepslate_tin_ore", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_COPPER_ORE)));
     //Rubber Wood
     public static final RegistryObject<Block> RUBBER_PLANKS = BLOCKS.register("rubber_planks",() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log",() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
@@ -47,6 +45,11 @@ public final class BlockInit {
     public static final RegistryObject<Block> TOPAZ_BLOCK = BLOCKS.register("topaz_block",() -> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_BLOCK)));
     public static final RegistryObject<Block> TOPAZ_ORE = BLOCKS.register("topaz_ore",() -> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_ORE)));
     public static final RegistryObject<Block> DEEPSLATE_TOPAZ_ORE = BLOCKS.register("deepslate_topaz_ore",() -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_EMERALD_ORE)));
+
+    //Tin
+    public static final RegistryObject<Block> TIN_ORE = BLOCKS.register("tin_ore", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COPPER_ORE)));
+    public static final RegistryObject<Block> DEEPSLATE_TIN_ORE = BLOCKS.register("deepslate_tin_ore", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_COPPER_ORE)));
+    public static final RegistryObject<Block> TIN_BLOCK = BLOCKS.register("tin_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)));
 
 }
 

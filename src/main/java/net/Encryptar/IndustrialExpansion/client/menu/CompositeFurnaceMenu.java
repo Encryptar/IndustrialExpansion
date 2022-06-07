@@ -1,5 +1,6 @@
 package net.Encryptar.IndustrialExpansion.client.menu;
 
+import net.Encryptar.IndustrialExpansion.client.menu.slot.ModFuelSlot;
 import net.Encryptar.IndustrialExpansion.client.menu.slot.ModResultSlot;
 import net.Encryptar.IndustrialExpansion.common.blocks.CompositeFurnace.CompositeFurnaceEntity;
 import net.Encryptar.IndustrialExpansion.core.init.BlockInit;
@@ -34,7 +35,7 @@ public class CompositeFurnaceMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 17, 42));
+            this.addSlot(new ModFuelSlot(handler, 0, 17, 42));
             this.addSlot(new SlotItemHandler(handler, 1, 48, 17));
             this.addSlot(new SlotItemHandler(handler, 2, 66, 17));
             this.addSlot(new SlotItemHandler(handler, 3, 84, 17));
@@ -54,11 +55,22 @@ public class CompositeFurnaceMenu extends AbstractContainerMenu {
         return data.get(0) > 0;
     }
 
+    public boolean isLit(){
+        return blockEntity.getLitTime() > 0;
+    }
+
+    public int getScaledLitTime(){
+        int litTime = blockEntity.getLitTime();
+
+        int fireSize = 14;
+        int maxLitTime = blockEntity.getMaxLitTime();
+        return maxLitTime != 0 && litTime != 0 ? (int) (Math.round( ((double) litTime / maxLitTime) * fireSize)) : 0;
+    }
+
     public int getScaledProgress() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);  // Max Progress
-        int progressArrowSize = 26; // This is the height in pixels of your arrow
-
+        int progressArrowSize = 16; // This is the height in pixels of your arrow
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
 

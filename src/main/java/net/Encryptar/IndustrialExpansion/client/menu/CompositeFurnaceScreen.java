@@ -30,6 +30,10 @@ public class CompositeFurnaceScreen extends AbstractContainerScreen<CompositeFur
         if(menu.isCrafting()) {
             blit(pPoseStack, x + 110, y + 35, 177, 14, menu.getScaledProgress(), 16);
         }
+        if(menu.isLit()){
+            blit(pPoseStack, x + 18, y + 25 + 14 - menu.getScaledLitTime(), 176, 14-menu.getScaledLitTime(), 14, menu.getScaledLitTime());
+        }
+
     }
 
     @Override

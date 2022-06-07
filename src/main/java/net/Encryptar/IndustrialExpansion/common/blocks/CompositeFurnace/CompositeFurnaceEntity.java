@@ -42,8 +42,10 @@ public class CompositeFurnaceEntity extends BlockEntity implements MenuProvider 
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
     private int progress = 0;
-    private int maxProgress = 20;
+    private int maxProgress = 100;
     protected final ContainerData data;
+    int litTime;
+    int maxLitTime;
 
 
 
@@ -129,22 +131,36 @@ public class CompositeFurnaceEntity extends BlockEntity implements MenuProvider 
     }
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, CompositeFurnaceEntity pBlockEntity) {
-        if(hasRecipe(pBlockEntity)) {
-            pBlockEntity.progress++;
-            setChanged(pLevel, pPos, pState);
-            if(pBlockEntity.progress > pBlockEntity.maxProgress){
-                craftItem(pBlockEntity);
+        if(  (!pBlockEntity.isLit() && pBlockEntity.itemHandler.getStackInSlot(0)!=null  )  ) {
+            if (hasRecipe(pBlockEntity)) {
+                burnFuel(pBlockEntity);
+                updateBlockState(pLevel, pPos, pState, pBlockEntity);
+            }
+        }
+        if(pBlockEntity.isLit()){
+            pBlockEntity.litTime--;
+            if(hasRecipe(pBlockEntity)) {
+                pBlockEntity.progress++;
+                setChanged(pLevel, pPos, pState);
+                if(pBlockEntity.progress > pBlockEntity.maxProgress){
+                    craftItem(pBlockEntity);
+                }
+            } else {
+                setChanged(pLevel, pPos, pState);
+                pBlockEntity.resetProgress();
             }
         } else {
-            setChanged(pLevel, pPos, pState);
+            updateBlockState(pLevel, pPos, pState, pBlockEntity);
             pBlockEntity.resetProgress();
         }
+
+
     }
 
     private static boolean hasRecipe(CompositeFurnaceEntity entity) {
         Level level = entity.level;
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
-        for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
+        for (int i = 1; i < entity.itemHandler.getSlots(); i++) {
             inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
         }
 
@@ -158,7 +174,7 @@ public class CompositeFurnaceEntity extends BlockEntity implements MenuProvider 
     public static void craftItem(CompositeFurnaceEntity blockEntity){
         Level level = blockEntity.level;
         SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-        for (int i = 0; i < blockEntity.itemHandler.getSlots(); i++) {
+        for (int i = 1; i < blockEntity.itemHandler.getSlots(); i++) {
             inventory.setItem(i, blockEntity.itemHandler.getStackInSlot(i));
         }
 
@@ -191,12 +207,30 @@ public class CompositeFurnaceEntity extends BlockEntity implements MenuProvider 
     private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
         return inventory.getItem(10).getMaxStackSize() > inventory.getItem(10).getCount();
     }
-
     private void resetProgress() {
         this.progress = 0;
     }
 
+    private boolean isLit() {
+        return this.litTime > 0;
+    }
+
+    public int getLitTime(){
+        return litTime;
+    }
+
+    public int getMaxLitTime(){
+        return maxLitTime;
+    }
+
+    public static void updateBlockState(Level pLevel, BlockPos pPos, BlockState pState, CompositeFurnaceEntity pBlockEntity){
+        pState = pState.setValue(LIT, Boolean.valueOf(pBlockEntity.litTime!=0));
+        pLevel.setBlock(pPos, pState, 1);
+        setChanged(pLevel, pPos, pState);
+    }
+
     public static void burnFuel(CompositeFurnaceEntity blockEntity){
-        blockEntity.itemHandler.extractItem(0, 1, false);
+        blockEntity.litTime = net.minecraftforge.common.ForgeHooks.getBurnTime(blockEntity.itemHandler.extractItem(0, 1, false), null);
+        blockEntity.maxLitTime = blockEntity.litTime;
     }
 }

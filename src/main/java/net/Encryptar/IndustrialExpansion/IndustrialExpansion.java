@@ -22,7 +22,7 @@ public class IndustrialExpansion {
     public static final CreativeModeTab IndustrialExpansionCreativeTab = new CreativeModeTab(MODID) {
         @Override
         public ItemStack makeIcon() {
-            return ItemInit.TIN_ORE_BLOCKITEM.get().getDefaultInstance();
+            return ItemInit.TOPAZ.get().getDefaultInstance();
         }
     };
     public IndustrialExpansion() {

@@ -29,7 +29,6 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public class TapBlock extends HorizontalDirectionalBlock implements EntityBlock {
-    public static final BooleanProperty IS_USED = BooleanProperty.create("is_used");
     private static final Map<Direction, VoxelShape> SHAPES = new EnumMap<>(Direction.class);
     private static final Optional<VoxelShape> SHAPE = Optional.of(Stream.of(
                     Block.box(9, 8, 0, 10, 9, 3),
@@ -67,7 +66,7 @@ public class TapBlock extends HorizontalDirectionalBlock implements EntityBlock 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(FACING, IS_USED);
+        builder.add(FACING);
     }
 
     protected void runCalculation(VoxelShape shape) {
