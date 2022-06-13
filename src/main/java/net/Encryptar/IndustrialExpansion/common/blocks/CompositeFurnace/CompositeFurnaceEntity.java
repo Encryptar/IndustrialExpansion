@@ -5,6 +5,7 @@ import net.Encryptar.IndustrialExpansion.common.recipes.CompositeSmeltingRecipe;
 import net.Encryptar.IndustrialExpansion.core.init.BlockEntityInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -29,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nonnull;
 import java.util.Optional;
 import java.util.Random;
+import java.util.Set;
 
 import static net.Encryptar.IndustrialExpansion.common.blocks.CompositeFurnace.CompositeFurnace.LIT;
 
@@ -132,6 +135,7 @@ public class CompositeFurnaceEntity extends BlockEntity implements MenuProvider 
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, CompositeFurnaceEntity pBlockEntity) {
         if(  (!pBlockEntity.isLit() && pBlockEntity.itemHandler.getStackInSlot(0)!=null  )  ) {
+
             if (hasRecipe(pBlockEntity)) {
                 burnFuel(pBlockEntity);
                 updateBlockState(pLevel, pPos, pState, pBlockEntity);
@@ -160,12 +164,13 @@ public class CompositeFurnaceEntity extends BlockEntity implements MenuProvider 
     private static boolean hasRecipe(CompositeFurnaceEntity entity) {
         Level level = entity.level;
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
-        for (int i = 1; i < entity.itemHandler.getSlots(); i++) {
+        for (int i = 1; i < entity.itemHandler.getSlots()-1; i++) {
             inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
         }
 
         Optional<CompositeSmeltingRecipe> match = level.getRecipeManager()
                 .getRecipeFor(CompositeSmeltingRecipe.Type.INSTANCE, inventory, level);
+
 
         return match.isPresent() && canInsertAmountIntoOutputSlot(inventory)
                 && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem());
@@ -174,12 +179,13 @@ public class CompositeFurnaceEntity extends BlockEntity implements MenuProvider 
     public static void craftItem(CompositeFurnaceEntity blockEntity){
         Level level = blockEntity.level;
         SimpleContainer inventory = new SimpleContainer(blockEntity.itemHandler.getSlots());
-        for (int i = 1; i < blockEntity.itemHandler.getSlots(); i++) {
+        for (int i = 1; i < blockEntity.itemHandler.getSlots()-1; i++) {
             inventory.setItem(i, blockEntity.itemHandler.getStackInSlot(i));
         }
 
         Optional<CompositeSmeltingRecipe> match = level.getRecipeManager()
                 .getRecipeFor(CompositeSmeltingRecipe.Type.INSTANCE, inventory, level);
+
 
         if(match.isPresent()) {
             blockEntity.itemHandler.extractItem(1, 1, false);
@@ -193,7 +199,7 @@ public class CompositeFurnaceEntity extends BlockEntity implements MenuProvider 
             blockEntity.itemHandler.extractItem(9, 1, false);
 
             blockEntity.itemHandler.setStackInSlot(10, new ItemStack(match.get().getResultItem().getItem(),
-                    blockEntity.itemHandler.getStackInSlot(10).getCount() + 1));
+                    blockEntity.itemHandler.getStackInSlot(10).getCount() + match.get().getResultItem().getCount()));
 
             blockEntity.resetProgress();
         }

@@ -7,7 +7,7 @@
     {"item": "minecraft:copper_ingot"}
   ],
   "output": {
-    "item": "industrial_expansion:ruby_hoe",
-    "count": 1
+    "item": "industrial_expansion:topaz",
+    "count": 4
   }
 }

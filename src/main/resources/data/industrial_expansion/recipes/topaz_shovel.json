@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " #",
+    " /",
+    " /"
+  ],
+  "key": {
+    "#": {
+      "item": "industrial_expansion:topaz"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "industrial_expansion:topaz_shovel",
+    "count": 1
+  }
+}

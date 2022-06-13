@@ -8,7 +8,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
@@ -19,7 +18,6 @@ public class CompositeSmeltingRecipe implements Recipe<SimpleContainer> {
     private final ResourceLocation id;
     private final ItemStack output;
     private final NonNullList<Ingredient> recipeItems;
-    private final boolean isSimple;
 
 
     public CompositeSmeltingRecipe(ResourceLocation id, ItemStack output,
@@ -27,13 +25,11 @@ public class CompositeSmeltingRecipe implements Recipe<SimpleContainer> {
         this.id = id;
         this.output = output;
         this.recipeItems = recipeItems;
-        this.isSimple = recipeItems.stream().allMatch(Ingredient::isSimple);
     }
 
 
     @Override
     public boolean matches(SimpleContainer container, Level level) {
-        StackedContents stackedcontents = new StackedContents();
         java.util.List<ItemStack> inputs = new java.util.ArrayList<>();
         int i = 0;
 
@@ -41,12 +37,13 @@ public class CompositeSmeltingRecipe implements Recipe<SimpleContainer> {
             ItemStack itemstack = container.getItem(j);
             if (!itemstack.isEmpty()) {
                 ++i;
-                if (isSimple)
-                    stackedcontents.accountStack(itemstack, 1);
-                else inputs.add(itemstack);
+                inputs.add(itemstack);
             }
         }
-        return i == this.recipeItems.size() && (isSimple ? stackedcontents.canCraft(this, null) : net.minecraftforge.common.util.RecipeMatcher.findMatches(inputs,  this.recipeItems) != null);
+
+        return i == this.recipeItems.size() &&
+                        net.minecraftforge.common.util.RecipeMatcher.findMatches(inputs,  this.recipeItems) != null;
+
     }
 
     @Override
@@ -97,7 +94,6 @@ public class CompositeSmeltingRecipe implements Recipe<SimpleContainer> {
 
 
             for (int i = 0; i < inputs.size(); i++) {
-                System.out.println(Ingredient.fromJson(ingredients.get(i)));
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 

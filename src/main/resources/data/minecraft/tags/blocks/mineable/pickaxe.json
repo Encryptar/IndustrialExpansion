@@ -1,7 +1,19 @@
 {
   "replace": false,
   "values": [
+    "industrial_expansion:tree_sap_tap",
     "industrial_expansion:tin_ore",
-    "industrial_expansion:deepslate_tin_ore"
+    "industrial_expansion:deepslate_tin_ore",
+    "industrial_expansion:topaz_ore",
+    "industrial_expansion:deepslate_topaz_ore",
+    "industrial_expansion:sapphire_ore",
+    "industrial_expansion:deepslate_sapphire_ore",
+    "industrial_expansion:ruby_ore",
+    "industrial_expansion:deepslate_ruby_ore",
+    "industrial_expansion:tin_block",
+    "industrial_expansion:topaz_block",
+    "industrial_expansion:sapphire_block",
+    "industrial_expansion:ruby_block",
+    "industrial_expansion:composite_furnace"
   ]
 }
