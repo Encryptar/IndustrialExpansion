@@ -31,6 +31,7 @@ public class OreGeneration {
         base.add(RUBY_PLACED);
         base.add(SAPPHIRE_PLACED);
         base.add(TIN_PLACED);
+        base.add(TOPAZ_PLACED);
     }
 
     public static List<PlacementModifier> orePlacement(PlacementModifier p_195347_, PlacementModifier p_195348_) {
@@ -71,6 +72,7 @@ public class OreGeneration {
                     HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80))));
 
 
+
     public static final List<OreConfiguration.TargetBlockState> OVERWORLD_TIN_ORES = List.of(
             OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, BlockInit.TIN_ORE.get().defaultBlockState()),
             OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, BlockInit.DEEPSLATE_TIN_ORE.get().defaultBlockState()));
@@ -81,5 +83,19 @@ public class OreGeneration {
     public static final Holder<PlacedFeature> TIN_PLACED = PlacementUtils.register("tin_ore_placed",
             TIN_ORE, commonOrePlacement(7, // VeinsPerChunk
                     HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80))));
+
+
+
+    public static final List<OreConfiguration.TargetBlockState> OVERWORLD_TOPAZ_ORES = List.of(
+            OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, BlockInit.TOPAZ_ORE.get().defaultBlockState()),
+            OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, BlockInit.DEEPSLATE_TOPAZ_ORE.get().defaultBlockState()));
+
+    public static final Holder<ConfiguredFeature<OreConfiguration, ?>> TOPAZ_ORE = FeatureUtils.register("topaz_ore", Feature.ORE,
+            new OreConfiguration(OVERWORLD_TOPAZ_ORES, 6));
+
+    public static final Holder<PlacedFeature> TOPAZ_PLACED = PlacementUtils.register("topaz_ore_placed",
+            TOPAZ_ORE, commonOrePlacement(7, // VeinsPerChunk
+                    HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(-80), VerticalAnchor.aboveBottom(80))));
+
 
 }
